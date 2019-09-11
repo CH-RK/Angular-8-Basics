@@ -1,0 +1,43 @@
+<h3>The Basics of Angular</h3>
+<hr>
+<h4>String Interpolation </h4>
+<h5>The complte URL is : <a href="http://localhost:4200">{{serverPortName}}{{serverId}}</a></h5>
+<h5>The {{'Angular'}} port is {{serverId}}</h5> <!--we are passing a string to sting interpolation-->
+<h5>Server Status Form Method Calling <span [ngStyle]="{color:getColor()}">{{getServerStatus()+"..."}}</span></h5>
+
+<!-- Property Binding -->
+<hr>
+<h4>Property Binding</h4>
+<button class="btn btn-info" [disabled]='!allowNewServer' (click)="onTextChange();">Add Server</button> &nbsp;<span>After 2 Seconds Button got enable --> "{{allowNewServer}}"</span>
+<p>This is appended to internal property of p element</p> <span [innerText]="allowNewServer"></span>
+<p *ngIf="serverCreates">{{isServerCreated}}</p> 
+
+<hr>
+<h4>Event Data Passing</h4>
+<input type="text" class="form-control" placeholder="Enter Server Name" (input)="onInputUpdate($event)" />
+{{serverName}}
+
+<hr>
+<h4>Two Way data binding</h4>
+<input type="text" class="form-control" placeholder="Enter Server Name" [(ngModel)]="serverName" />
+
+<hr>
+<h4>Directives</h4>
+<h5>*ngIf <span>When You Click on  <p class="btn btn-default">Add server </p> button the text will get appered</span></h5>
+<h5 *ngIf="serverCreates">`This the text with got appered`</h5>
+<h6>*ngIf and Else</h6>
+<h5 *ngIf="serverCreates ; else noServer">Hello This is Rakesh</h5>
+<ng-template #noServer>
+    <p>ng-template inserted...</p>
+</ng-template>
+
+<hr>
+<h5>ngStyle</h5>
+<h5 [ngStyle] = "{color:getColor()}">This the text based on online status </h5>
+
+<h5>ngClass</h5>
+<h5 [ngClass]="{online: getServerStatus() === 'Online'}">This text Applying dynamic class with ng Class Based on ng Class </h5>
+
+<h5>*ngFor</h5>
+<rkFWork-servers *ngFor="let server of servers"></rkFWork-servers>
+
